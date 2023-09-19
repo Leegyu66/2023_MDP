@@ -1,6 +1,6 @@
 # 2023_명장기술
 - Team 2 of AI Department 
-  
+- 2조가 2기죠
 Incheon Electronic Meister High School MDP Project
 
 작품 : 농인의 목소리 
