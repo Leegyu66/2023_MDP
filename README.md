@@ -1,7 +1,7 @@
 # 2023_MDP
- Incheon Electronic Meister High School MDP Project.
- Team 2 of AI Department.
- 2조가 2기죠.
+ Incheon Electronic Meister High School MDP Project__
+ Team 2 of AI Department__
+ 2조가 2기죠__
 
 ## 🖥 작품 소개
 SLT(Sign Language Translator) 
