@@ -16,7 +16,7 @@ SLT(Sign Language Translator)
 - 송정민 - 하드웨어 담당, 웹앱 서비스 개발 보조
 
 ## Reference
-https://github.com/oswaldoludwig/Human-Action-Recognition-with-Keras/blob/master/HumanActionRecognition.py\
-https://github.com/nam157/human_activity_recognition-\
-https://blog.naver.com/PostView.naver?blogId=112fkdldjs&logNo=222972860886\
-https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/03-advanced/generative_adversarial_network/main.py#L41-L57\
+https://github.com/oswaldoludwig/Human-Action-Recognition-with-Keras/blob/master/HumanActionRecognition.py \
+https://github.com/nam157/human_activity_recognition- \
+https://blog.naver.com/PostView.naver?blogId=112fkdldjs&logNo=222972860886 \
+https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/03-advanced/generative_adversarial_network/main.py#L41-L57 \
