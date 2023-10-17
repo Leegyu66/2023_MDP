@@ -11,9 +11,9 @@ SLT(Sign Language Translator)
 - 2023.08.11 ~ 
 
 ## 👨‍👦‍👦 구성원
-- 최규영 - AI서비스 개발 담당
+- <p color = "blue">최규영</p> - AI서비스 개발 담당
 - 김지민 - 웹앱 서비스 개발 담당
-- 송정민 - 하드웨어 담당, 모델링
+- 송정민 - 하드웨어, 라즈베리 파이 담당
 
 ## Reference
 https://github.com/oswaldoludwig/Human-Action-Recognition-with-Keras/blob/master/HumanActionRecognition.py \
