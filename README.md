@@ -20,3 +20,4 @@ https://github.com/oswaldoludwig/Human-Action-Recognition-with-Keras/blob/master
 https://github.com/nam157/human_activity_recognition- \
 https://blog.naver.com/PostView.naver?blogId=112fkdldjs&logNo=222972860886 \
 https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/03-advanced/generative_adversarial_network/main.py#L41-L57 \
+https://github.com/dawi9840/mediapipe_pose_classification_with_tf/tree/main
