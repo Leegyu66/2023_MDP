@@ -8,6 +8,7 @@ class mediapipe_pose:
         self.mp_holistic = mp.solutions.holistic 
         self.mp_drawing = mp.solutions.drawing_utils
         
+    # holistic을 그려주는 함수
     def drawing_holistic(self,image,model):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) 
         image.flags.writeable = False                 
@@ -16,16 +17,19 @@ class mediapipe_pose:
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR) 
         return image, results
     
+    # landmark를 찍어주는 함수
     def draw_styled_landmarks(self,image, results):
         self.mp_drawing.draw_landmarks(image, results.pose_landmarks, self.mp_holistic.POSE_CONNECTIONS,
                                  self.mp_drawing.DrawingSpec(color=(112,112,112), thickness=2, circle_radius=1), 
                                  self.mp_drawing.DrawingSpec(color=(94,200,0), thickness=2, circle_radius=1)
                                  ) 
         
-    def extract_keypoints(self,results):
+    # point의 좌표를 찍어주는 함수
+    def extract_keypoints(self, results):
         pose = np.array([[res.x, res.y, res.z, res.visibility] for res in results.pose_landmarks.landmark]).flatten() if results.pose_landmarks else np.zeros(33*4)
         return np.concatenate([pose])
     
+    # 박싱해주는 함수
     def BBox(self,image,results):
         xList,yList,bbox = [],[],[]
         if results.pose_landmarks:
