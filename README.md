@@ -13,6 +13,7 @@ SLT(Sign Language Translator)
 ## 👨‍👦‍👦 구성원
 <div><p>-최규영 - AI서비스 개발 담당</p></div>
 - 김지민 - 웹앱 서비스 개발 담당
+
 - 송정민 - 하드웨어, 라즈베리 파이 담당
 
 ## Reference
