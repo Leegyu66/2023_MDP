@@ -12,8 +12,8 @@ SLT(Sign Language Translator)
 
 ## 👨‍👦‍👦 구성원
 
-<div><p>
- 최규영 - AI서비스 개발 담당</p></div>
+
+<div><p>최규영 - AI서비스 개발 담당</p></div>
 
 - 김지민 - 웹앱 서비스 개발 담당
 
