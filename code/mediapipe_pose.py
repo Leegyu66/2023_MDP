@@ -20,7 +20,7 @@ frame_counter = 0
 
 use_coord = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 # pose 랜드마크를 찍어주는 함수
-def pose_landmark(img):
+def pose_landmark(img, label):
     global frame_counter
     frame_counter += 1
     img_height, img_width, _ = img.shape
@@ -29,7 +29,7 @@ def pose_landmark(img):
     image, results = media.drawing_holistic(img, holistic)
 
 
-    coor.record_coordinates(results, csv_path, "happy", use_coord)
+    coor.record_coordinates(results, csv_path, label, use_coord)
 
     # landmark draw 해주는 함수
     media.draw_styled_landmarks(image, results)
@@ -41,21 +41,24 @@ def pose_landmark(img):
     cv2.putText(image,"FPS:" +str(int(fps)),(10,100), cv2.FONT_HERSHEY_PLAIN, 2,(255,0,190),2,cv2.LINE_AA)
     return image
 
+mp4_list = ['happy.mp4', 'hello.mp4']
 
 # Holistic 오픈
 coor.save_csv(csv_path, use_coord)
-cap = cv2.VideoCapture("기쁘다.mp4")
-with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
-        while True:
-            ret, img = cap.read()
-            if not ret:
-                break 
-            image = pose_landmark(img)
+for i in range(2):
+    cap = cv2.VideoCapture(mp4_list[i])
+    with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
+            while True:
+                ret, img = cap.read()
+                if not ret:
+                    break 
+                image = pose_landmark(img, mp4_list[i].split('.')[0])
+                print(mp4_list[i].split('.')[0])
 
-            cv2.imshow('Video', image)
+                cv2.imshow('Video', image)
 
-            if cv2.waitKey(1) == ord('q'):
-                break
+                if cv2.waitKey(1) == ord('q'):
+                    break
 
 # print(coor)
 
