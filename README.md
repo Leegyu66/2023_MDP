@@ -20,7 +20,7 @@ SLT(Sign Language Translator)
 ## 🎮 방법론
 - 가. pose estimation 영역의 모델인 mediapipe를 사용하여 수화를 하는 사람의 몸에 특정 좌표를 딴다.
 - 나. 좌표를 모델에 학습시킨 후 opencv에 실시간으로 적용한다.
-- 
+
 ## 진척도
 ### 2023-11-02
 - 좌표를 땄으며 모델을 만드는 중
