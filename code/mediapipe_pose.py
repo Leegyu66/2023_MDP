@@ -37,28 +37,35 @@ def pose_landmark(img, label):
     # fps counter
     cTime = time.time()
     fps = frame_counter / (time.time() - start_time)
-    pTime = cTime
-    cv2.putText(image,"FPS:" +str(int(fps)),(10,100), cv2.FONT_HERSHEY_PLAIN, 2,(255,0,190),2,cv2.LINE_AA)
+
+    # cv2.putText(image,"FPS:" +str(int(fps)),(10,100), cv2.FONT_HERSHEY_PLAIN, 2,(255,0,190),2,cv2.LINE_AA)
     return image
 
-mp4_list = ['happy.mp4', 'hello.mp4']
+label = ['hello', 'happy']
 
 # Holistic 오픈
 coor.save_csv(csv_path, use_coord)
 for i in range(2):
-    cap = cv2.VideoCapture(mp4_list[i])
+    e_time = 0
+    count = 0
+    cap = cv2.VideoCapture(0)
     with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
+            s_time = time.time()
             while True:
+                e_time = time.time()
+                if int(e_time - s_time) > 4 or count == 60:
+                    break
                 ret, img = cap.read()
-                if not ret:
-                    break 
-                image = pose_landmark(img, mp4_list[i].split('.')[0])
-                print(mp4_list[i].split('.')[0])
+                image = pose_landmark(img, label[i])
 
+                count += 1
                 cv2.imshow('Video', image)
 
+                if not ret:
+                    break
                 if cv2.waitKey(1) == ord('q'):
                     break
+    print(count)
 
 # print(coor)
 
