@@ -12,7 +12,7 @@ mp_drawing = mp.solutions.drawing_utils
 media = mediapipe_pose()
 coor = Coor()
 
-csv_path = "datasets\coords_dataset.csv"
+csv_path = "datasets\coords_dataset_test.csv"
 
 start_time = time.time()
 
