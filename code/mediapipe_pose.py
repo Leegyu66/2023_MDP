@@ -18,6 +18,8 @@ start_time = time.time()
 
 frame_counter = 0
 
+data = []
+
 use_coord = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 # pose 랜드마크를 찍어주는 함수
 def pose_landmark(img, label):
@@ -29,8 +31,8 @@ def pose_landmark(img, label):
     image, results = media.drawing_holistic(img, holistic)
 
 
-    coor.record_coordinates(results, csv_path, label, use_coord)
-
+    data.append(coor.record_coordinates(results, csv_path, label, use_coord))
+    
     # landmark draw 해주는 함수
     media.draw_styled_landmarks(image, results)
 
@@ -49,6 +51,7 @@ for i in range(2):
     e_time = 0
     count = 0
     cap = cv2.VideoCapture(0)
+    
     with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
             s_time = time.time()
             while True:
@@ -57,7 +60,7 @@ for i in range(2):
                     break
                 ret, img = cap.read()
                 image = pose_landmark(img, label[i])
-
+                
                 count += 1
                 cv2.imshow('Video', image)
 
@@ -66,7 +69,9 @@ for i in range(2):
                 if cv2.waitKey(1) == ord('q'):
                     break
     print(count)
-
+data = np.array(data)
+print(data.shape)
+print(data)
 # print(coor)
 
 cap.release()
