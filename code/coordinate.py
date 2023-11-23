@@ -14,27 +14,25 @@ class Coor():
     def __init__(self):
         pass
     # csv에 X{}, Y{}, Z{}을 31까지 저장
-    def save_csv(self, create_csv, use_coord):
-        try:
-            num_coords = len(use_coord) # num_coords: 33
+    # def save_csv(self, create_csv, use_coord):
+    #     try:
+    #         num_coords = len(use_coord) # num_coords: 33
 
-            landmarks = ['class']
-            for val in use_coord:
-                landmarks += ['x{}'.format(val), 'y{}'.format(val), 'z{}'.format(val)]
+    #         landmarks = ['class']
+    #         for val in use_coord:
+    #             landmarks += ['x{}'.format(val), 'y{}'.format(val), 'z{}'.format(val)]
 
-            with open(create_csv, mode='w', newline='') as f:
-                csv_writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                csv_writer.writerow(landmarks)
-        except:
-            print("으익")
+    #         with open(create_csv, mode='w', newline='') as f:
+    #             csv_writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    #             csv_writer.writerow(landmarks)
+    #     except:
+    #         print("으익")
 
 
     # 좌표를 따서 저장해주는 함수
     def record_coordinates(self, results, csv_file, class_name, use_coord):
-        count = 1
-        repo = []
         # try:
-        pose_row = []
+
         pose = results.pose_landmarks.landmark
         # pose_row = list(np.array([[landmark.x, landmark.y, landmark.z, landmark.visibility] for landmark in pose]).flatten())
         joint = np.zeros((33, 4))
@@ -55,12 +53,12 @@ class Coor():
         
         angle_label = np.array([angle], dtype=np.float32)
         angle_label = np.append(angle_label, class_name)
-                        
-        pose_row = np.array(pose_row)
         
         d = np.concatenate([joint.flatten(), angle_label])
+        return_data = d[:141]
+        print(return_data)
         
-        return d
+        return return_data
         
 
         # for i in pose_row:
