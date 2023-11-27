@@ -1,13 +1,15 @@
 import cv2
 import mediapipe as mp
+import time
+from pose_media import mediapipe_pose
+import csv
 import numpy as np
+from coordinate import Coor
 import os
 from keras.models import load_model
+from train_dataset import pose_landmark_dataset
 
-from mediapipe_pose import pose_landmark
-from pose_media import mediapipe_pose 
-from coordinate import Coor
-
+# mediapipe 불러오기
 mp_holistic = mp.solutions.holistic 
 mp_drawing = mp.solutions.drawing_utils
 media = mediapipe_pose()
@@ -29,24 +31,24 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         ret, frame = cap.read()
 
         img_height, img_width, _ = frame.shape
-        img = cv2.resize(img, (int(img_width * (400 / img_height)), 400))
+        img = cv2.resize(frame, (int(img_width * (400 / img_height)), 400))
 
-        image, data = pose_landmark(frame)
+        image, data = pose_landmark_dataset(frame, actions, holistic=holistic)
+        if data == None:
+            continue
         
-        keypoints = coor.record_coordinates(results, 1, 1, 1)
-        
-        seq.append(keypoints)
+        seq.append(data)
         
         if len(seq) < seq_length:
             continue
         
         input_data = np.expand_dims(np.array(seq[-30:]), axis=0)
         y_pred = model.predict(input_data)
+        y_pred = y_pred.squeeze(0)
         i_pred = int(np.argmax(y_pred))
-        conf = y_pred[i_pred].tolist()
-        print(type(conf))
-        
-        
+
+        conf = y_pred[i_pred]        
+        print(conf)
         if conf < 0.9:
             continue
             

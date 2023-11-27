@@ -43,3 +43,5 @@ class mediapipe_pose:
             ymin,ymax = min(yList),max(yList)
             bbox = xmin,ymin,xmax,ymax
         return bbox
+
+        
