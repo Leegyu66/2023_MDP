@@ -62,7 +62,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         if action_seq[-1] == action_seq[-2] == action_seq[-3]:
             this_action = action
 
-        cv2.putText(image, f'{this_action.upper()}', org=(15, 12), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
+        cv2.putText(image, f'{this_action.upper()}', org=(20, 30), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 0, 0), thickness=2)
 
 
         cv2.imshow('OpenCV', image)
