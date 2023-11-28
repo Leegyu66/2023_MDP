@@ -40,9 +40,9 @@ def pose_landmark_dataset(img, label, holistic):
     # cv2.putText(image,"FPS:" +str(int(fps)),(10,100), cv2.FONT_HERSHEY_PLAIN, 2,(255,0,190),2,cv2.LINE_AA)
     return image, data
 
-DATA_PATH = os.path.join('datasets')
+DATA_PATH = os.path.join('datasets2')
 
-actions = np.array(['hello', 'happy', 'iloveyou'])
+actions = np.array(['stand', 'hello', 'happy', 'iloveyou'])
 
 for action in actions:
     for sequence in range(sequences):
@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 for frame_num in range(sequence_length):
 
                     ret, img = cap.read()
-                    image, data = pose_landmark_dataset(img, action)
+                    image, data = pose_landmark_dataset(img, action, holistic)
                     
                     if frame_num == 0:
                         cv2.putText(image, 'STARTING COLLECTION', (120, 200),

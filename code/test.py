@@ -8,6 +8,7 @@ from coordinate import Coor
 import os
 from keras.models import load_model
 from train_dataset import pose_landmark_dataset
+import random
 
 # mediapipe 불러오기
 mp_holistic = mp.solutions.holistic 
@@ -17,13 +18,13 @@ coor = Coor()
 
 cap = cv2.VideoCapture(0)
 
-model_path = os.path.join('models', 'model.h5')
+model_path = os.path.join('models2', 'model.h5')
 
 seq = []
 action_seq = []
 seq_length = 30
 
-actions = np.array(['hello', 'happy', 'iloveyou'])
+actions = np.array(['stand', 'hello', 'happy', 'iloveyou'])
 model = load_model(model_path)
 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
@@ -34,8 +35,12 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         img = cv2.resize(frame, (int(img_width * (400 / img_height)), 400))
 
         image, data = pose_landmark_dataset(frame, actions, holistic=holistic)
-        if data == None:
-            continue
+        
+        try:
+            if data == None:
+                continue
+        except:
+            pass
         
         seq.append(data)
         
@@ -48,21 +53,23 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         i_pred = int(np.argmax(y_pred))
 
         conf = y_pred[i_pred]        
-        print(conf)
-        if conf < 0.9:
-            continue
+        
+        # if conf < 0.8:
+        #     continue
             
         action = actions[i_pred]
         action_seq.append(action)
-        
+
         if len(action_seq) < 3:
                 continue
 
         this_action = '?'
         if action_seq[-1] == action_seq[-2] == action_seq[-3]:
             this_action = action
-
-        cv2.putText(image, f'{this_action.upper()}', org=(20, 30), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 0, 0), thickness=2)
+        
+        if conf > 0.9:
+            print(conf)
+            cv2.putText(image, f'{this_action.upper()}', org=(random.randint(50, 300), random.randint(50, 400)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 0, 0), thickness=2)
 
 
         cv2.imshow('OpenCV', image)

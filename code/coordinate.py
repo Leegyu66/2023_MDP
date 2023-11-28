@@ -31,8 +31,8 @@ class Coor():
 
     # 좌표를 따서 저장해주는 함수
     def record_coordinates(self, results, csv_file, class_name, use_coord):
-        temp = []
         try:
+            temp = []
             pose = results.pose_landmarks.landmark
             # pose_row = list(np.array([[landmark.x, landmark.y, landmark.z, landmark.visibility] for landmark in pose]).flatten())
             joint = np.zeros((33, 4))
@@ -52,19 +52,15 @@ class Coor():
             angle = np.degrees(angle)
             
             angle_label = np.array([angle], dtype=np.float32)
-            angle_label = np.append(angle_label, class_name)
+            angle_label = np.append(angle_label, 1)
+                
             
             d = np.concatenate([joint.flatten(), angle_label])
-            for i in d[:141]:
-                temp.append(np.float32(i))
-            return_data = temp[:141]
+            
 
-            
-            return return_data
-            
+            return d[:-1]
         except:
             pass
-        
 
         # for i in pose_row:
         #     repo.append(round(i, 3))
