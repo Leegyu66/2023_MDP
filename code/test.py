@@ -7,6 +7,7 @@ import numpy as np
 from coordinate import Coor
 import os
 from keras.models import load_model
+from keras import Sequential
 from train_dataset import pose_landmark_dataset
 import random
 
@@ -18,14 +19,14 @@ coor = Coor()
 
 cap = cv2.VideoCapture(0)
 
-model_path = os.path.join('models2', 'model.h5')
+model_path = os.path.join('model_and_dataset', 'models2', 'model.h5')
 
 seq = []
 action_seq = []
 seq_length = 30
 
 actions = np.array(['stand', 'hello', 'happy', 'iloveyou'])
-model = load_model(model_path)
+model = load_model(model_path, compile=False)
 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
     while cap.isOpened():
@@ -46,6 +47,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         
         if len(seq) < seq_length:
             continue
+            
         
         input_data = np.expand_dims(np.array(seq[-30:]), axis=0)
         y_pred = model.predict(input_data)
