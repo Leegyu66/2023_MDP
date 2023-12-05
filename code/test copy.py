@@ -19,7 +19,7 @@ coor = Coor()
 
 cap = cv2.VideoCapture(0)
 
-model_path = os.path.join('model_and_dataset', 'models2', 'model.h5')
+model_path = os.path.join('models2', 'model.h5')
 
 seq = []
 action_seq = []
@@ -55,7 +55,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         if len(seq) < seq_length:
             continue
         
-        if data[61] < data[53] or data[65] < data[57]:
+        if (data[61] < data[53] or data[65] < data[57]) and (data[55] > 0 and data[59] > 0) :
             
             pre_list = []
             for i in range(30):
