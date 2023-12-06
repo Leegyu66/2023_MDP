@@ -21,6 +21,7 @@ cap = cv2.VideoCapture(0)
 
 model_path = os.path.join('models2', 'model.h5')
 
+
 seq = []
 action_seq = []
 seq_length = 30
