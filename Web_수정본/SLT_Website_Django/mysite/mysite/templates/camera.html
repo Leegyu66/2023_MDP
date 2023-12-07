@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <html>
+        <head>
+           <script>
+                function call_counter(url) {
+                    window.open(url);
+                }
+            </script>
+        </head>
+        <body>
+            <button onclick="call_counter('http://127.0.0.1:8000/video_stream');">
+                카메라
+            </button>
+            
+        </body>
+    </html>
+{% endblock %}
