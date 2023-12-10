@@ -2,14 +2,14 @@ import os
 import json
 import pandas as pd
 
-# # 수어 데이터 file name에 "_F"가 있으면 정면을 보고 촬영한 영상이다
-# file_list = ["10", "10-1", "11", "11-1", "12", "12-1", "13", "13-1", "14", "14-1", "15", "15-1", "16", "16-1"]
-# file_path = os.path.join("D:")
-# file_dir = []
-# files = os.listdir(file_path)
-# files_dir = [i for i in files if "_real" in i]
-# files_dir = files_dir[16:]
-
+# 수어 데이터 file name에 "_F"가 있으면 정면을 보고 촬영한 영상이다
+file_list = ['08']
+file_path = os.path.join("E:")
+file_dir = []
+files = os.listdir(file_path)
+files_dir = [i for i in files if "15_real" in i]
+files_dir.sort()
+print(files_dir)
 # for i, j in enumerate(files_dir):
 #     file_dir.append(os.path.join(j, file_list[i]))
 
@@ -40,7 +40,7 @@ for folder in [folder_list[0]]:
                 data = json.load(f)
                 for item in data.get('data', []):
                     name = item.get('attributes', [{}])[0].get('name', '')
-                    if "많" in name:
+                    if "요청" in name:
                         file_num.append(file_name)
                         names.append(name)
     print(file_num, names)
