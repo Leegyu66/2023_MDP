@@ -8,7 +8,7 @@ SLT(Sign Language Translator)
 수화를 번역해주는 웹앱 서비스
 
 ## 🕰 개발 기간
-- 2023.08.11 ~ 
+- 2023.08.11. ~ 2023.12.22.
 
 ## 👨‍👦‍👦 구성원
 - 최규영 - AI서비스 개발 담당
@@ -22,6 +22,7 @@ SLT(Sign Language Translator)
 - 나. 좌표를 모델에 학습시킨 후 opencv에 실시간으로 적용한다.
 
 ## 하드웨어
+![Uploading KakaoTalk_20240209_234143765_03.jpg…]()
 
 
 ## Reference
