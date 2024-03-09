@@ -27,7 +27,9 @@ SLT(Sign Language Translator)
 
 
 ## WORK
+![KakaoTalk_20240209_234143765](https://github.com/Leegyu66/2023_MDP/assets/96297784/4800147c-598b-4cbf-b2f2-441d2ccba05c)
 
+![KakaoTalk_20240209_234143765_02](https://github.com/Leegyu66/2023_MDP/assets/96297784/f0884979-2445-45a2-8782-8abf2648ec59)
 
 ## Reference
 https://github.com/oswaldoludwig/Human-Action-Recognition-with-Keras/blob/master/HumanActionRecognition.py \
