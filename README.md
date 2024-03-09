@@ -22,7 +22,9 @@ SLT(Sign Language Translator)
 - 나. 좌표를 모델에 학습시킨 후 opencv에 실시간으로 적용한다.
 
 ## 하드웨어
-![Uploading KakaoTalk_20240209_234143765_03.jpg…]()
+
+![KakaoTalk_20240209_231155871_01](https://github.com/Leegyu66/2023_MDP/assets/96297784/5648c54b-dd24-405a-b9dc-156fd8cd043d)
+
 
 
 ## Reference
