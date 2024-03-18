@@ -33,6 +33,10 @@ SLT(Sign Language Translator)
 
 ![WIN_20231218_19_17_21_Pro (2)](https://github.com/Leegyu66/2023_MDP/assets/96297784/7566c238-f765-4343-a017-d31b42250bc4)
 
+## RESULT
+
+![ff](https://github.com/Leegyu66/2023_MDP/assets/96297784/1faef941-4c05-40e2-a026-edfb61420e79)
+
 
 ## Reference
 https://github.com/oswaldoludwig/Human-Action-Recognition-with-Keras/blob/master/HumanActionRecognition.py \
